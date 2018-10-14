@@ -1,0 +1,17 @@
+{
+  "s3": {
+    "stage": {
+      "bucket": "projects-staging.seattletimes.com",
+      "path": "/squarely-productive"
+    },
+    "live": {
+      "bucket": "projects.seattletimes.com",
+      "path": "/2018/local/white-population-without-college-degrees-nationally"
+    }
+  },
+  "title": "",
+  "description": "Since 2010, the white population without a college degree declined as a share of the total population (age 25 and older) in every state. The decline in Washington – 5.8 percentage points – was the 7th largest.",
+  "url": "https://projects.seattletimes.com//2018/local/white-population-without-college-degrees-nationally",
+  "slug": "",
+  "tags": []
+}

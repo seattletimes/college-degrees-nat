@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>
+    <%= json.project.title %>
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Safari, you're the worst -->
+  <meta name='format-detection' content='telephone=no'>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <%= t.include("partials/_head.html") %>
+</head>
+
+<body>
+
+  <responsive-child class="map-container">
+    <div class="outmost">
+      <section class="chatter">
+        <!-- <h1>Lorem Ipsum</h1> -->
+        <p>Since 2010, the white population without a college degree declined as a share of the total population (age 25 and older) in every state. The decline in Washington – 5.8 percentage points – was the 7th largest. </p>
+      </section>
+
+      <div class="aspect-ratio-outer">
+        <div class="aspect-ratio-inner">
+
+          <leaflet-map zoom=3>
+            <tile-layer layer="cartoPositron"></tile-layer>
+            <geo-json>
+              <geo-data>
+                <%= t.include("states.geo.json") %>
+              </geo-data>
+              <geo-style>{ "weight": 1, "color": "#000", "opacity":0.2 }</geo-style>
+              <geo-palette property="CHANGE TOTAL">
+                <color-mapping min=-7.0 max=-6.1 color="#238443"></color-mapping>
+                <color-mapping min=-6.0 max=-4.1 color="#78c679"></color-mapping>
+                <color-mapping min=-4.0 max=0 color="#d9f0a3"></color-mapping>
+
+              </geo-palette>
+              <geo-popup>
+                <h1 class="bigheader">{{NAME}}</h1>
+                <ul style="list-style:none; padding-left:0px">
+                  <li> <strong>Total change:</strong> {{CHANGE TOTAL}}
+                  <li> <strong>2017:</strong> {{2017}}
+                  <li> <strong>2010:</strong> {{2010}}
+                </ul>
+              </geo-popup>
+            </geo-json>
+          </leaflet-map>
+
+        </div>
+        <aside class="legend">
+          <h1>Map legend</h1>
+          <ul class="scale">
+            <li>
+              <span class="block" style="background-color: #238443; opacity:0.6"></span> -7.0 to -6.1</li>
+            <li>
+              <span class="block" style="background-color: #78c679; opacity:0.6"></span> -6.0 to -4.1</li>
+            <li>
+              <span class="block" style="background-color: #d9f0a3; opacity:1.0"></span> -4.0 and higher</li>
+          </ul>
+        </aside>
+      </div>
+
+
+      <div class="source">Source: U.S. Census
+        <span class="credit">FRANK MINA / THE SEATTLE TIMES</div>
+    </div>
+  </responsive-child>
+
+  <script src="app.js"></script>
+  <% /*= t.include("partials/_foot.html"); */ %>
+    <%= t.include("partials/_workHere.html") %>
+</body>
+
+</html>
